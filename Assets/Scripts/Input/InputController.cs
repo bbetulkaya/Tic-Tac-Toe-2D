@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Player.InputController
+namespace User.PlayerInput
 {
-
-
     public class InputController : MonoBehaviour
     {
 
