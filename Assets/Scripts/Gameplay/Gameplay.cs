@@ -37,17 +37,21 @@ public class Gameplay : MonoBehaviour
         {
             if (!gameboard.CheckisBoardFull())
             {
-                gameboard.SaveSelectedGrid(selectedGrid.gameObject, currentPlayer);
+                bool gridSaved = gameboard.SaveSelectedGrid(selectedGrid.gameObject, currentPlayer);
 
-                if (winningStates.isTheCharacterWinning(gameboard.GameBoard, currentPlayer.value))
+                if (gridSaved)
                 {
-                    Debug.Log("The Winner is: " + currentPlayer.playerName);
-                    // Oyunu bitirme kodlarının yazılması gereken yer.
+                    if (winningStates.isTheCharacterWinning(gameboard.GameBoard, currentPlayer.value))
+                    {
+                        Debug.Log("The Winner is: " + currentPlayer.playerName);
+                        // Oyunu bitirme kodlarının yazılması gereken yer.
+                    }
+                    else
+                    {
+                        SwicthCharacter(currentPlayer.value);
+                    }
                 }
-                else
-                {
-                    SwicthCharacter(currentPlayer.value);
-                }
+
             }
         }
     }
@@ -60,7 +64,7 @@ public class Gameplay : MonoBehaviour
         currentPlayer = player;
     }
 
-   void SwicthCharacter(int value)
+    void SwicthCharacter(int value)
     {
 
         if (value == 1)

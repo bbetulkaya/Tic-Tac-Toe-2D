@@ -40,7 +40,7 @@ public class Gameboard : MonoBehaviour
         return true;
     }
 
-    public void SaveSelectedGrid(GameObject grid, Player currentPlayer)
+    public bool SaveSelectedGrid(GameObject grid, Player currentPlayer)
     {
         
         // Turn the grid name to integer
@@ -53,11 +53,13 @@ public class Gameboard : MonoBehaviour
             GameBoard[posCol, posRow] = currentPlayer.value;
             grid.GetComponent<SpriteRenderer>().sprite = currentPlayer.playerSprite ;
             currentPlayer.isYourTurn = false;
+            return true;
             
         }
         else
         {
             Debug.Log("The position is taken. Please Try Again..");
+            return false;
         }
 
     }
