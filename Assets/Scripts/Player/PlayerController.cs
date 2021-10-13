@@ -9,17 +9,25 @@ namespace User.PlayerController
 {
     public class PlayerController : MonoBehaviour
     {
+        Player player;
         public Gameplay gameplay;
 
         void Start()
         {
             gameplay = GetComponentInChildren<Gameplay>();
+            player = gameplay.currentPlayer;
         }
 
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            // WHEN THE ENEMY AI ADD DELETE THIS STATEMENT!!
+            if (!player.isYourTurn)
+            {
+                player = gameplay.currentPlayer;
+            }
+
+            if (Input.GetMouseButtonDown(0) && player.isYourTurn)
             {
                 gameplay.PlayerChoice();
             }
