@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Custom namespaces
-using User.PlayerInput;
+// using User.PlayerInput;
 
 namespace User.PlayerController
 {
     public class PlayerController : MonoBehaviour
     {
-        // Start is called before the first frame update
+        public Gameplay gameplay;
+
         void Start()
         {
-
+            gameplay = GetComponentInChildren<Gameplay>();
         }
 
-        // Update is called once per frame
+
         void Update()
         {
-            InputController ınput = new InputController();
-            ınput.GameBoardInput();
+            if (Input.GetMouseButtonDown(0))
+            {
+                gameplay.PlayerChoice();
+            }
         }
     }
 }
