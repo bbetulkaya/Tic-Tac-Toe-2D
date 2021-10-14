@@ -44,6 +44,7 @@ public class Gameplay : MonoBehaviour
                     if (winningStates.isTheCharacterWinning(gameboard.GameBoard, currentPlayer.value))
                     {
                         Debug.Log("The Winner is: " + currentPlayer.playerName);
+                        GameManager.Instance.GameOver();
                         // Oyunu bitirme kodlarının yazılması gereken yer.
                     }
                     else
