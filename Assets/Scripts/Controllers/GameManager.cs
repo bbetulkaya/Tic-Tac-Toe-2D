@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+// Custom namespaces
+using Controllers.UI;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
 
+    public UIController uIController;
     private void Awake()
     {
         _instance = this;
@@ -31,16 +35,14 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        Debug.Log("Pause");
-    }
 
+    }
 
     public void GameOver()
     {
-        Debug.Log("Game Over");
+        uIController.GameOverPanel();
+        // Debug.Log("Pause");
     }
-
-
 
     void SetUpTheGame()
     {
@@ -61,5 +63,9 @@ public class GameManager : MonoBehaviour
         // Check the winning states
         // Wait the enemy's move
         // LOOP
+    }
+    public void ReloadTheGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
