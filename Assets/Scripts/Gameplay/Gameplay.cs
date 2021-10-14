@@ -43,7 +43,7 @@ public class Gameplay : MonoBehaviour
                 {
                     if (winningStates.isTheCharacterWinning(gameboard.GameBoard, currentPlayer.value))
                     {
-                        Debug.Log("The Winner is: " + currentPlayer.playerName);
+                        GameManager.Instance.ShowDebugMessages("The Winner is: " + currentPlayer.playerName);
                         GameManager.Instance.GameOver();
                         // Oyunu bitirme kodlarının yazılması gereken yer.
                     }
@@ -53,6 +53,11 @@ public class Gameplay : MonoBehaviour
                     }
                 }
 
+            }
+            else
+            {
+                GameManager.Instance.ShowDebugMessages("The game is tie!");
+                GameManager.Instance.GameOver();
             }
         }
     }
@@ -72,15 +77,14 @@ public class Gameplay : MonoBehaviour
         {
             enemy.isYourTurn = isCurrentPlayer;
             currentPlayer = enemy;
-            Debug.Log("Enemy's Turn");
+            GameManager.Instance.ShowDebugMessages("Enemy's Turn");
 
         }
         else
         {
             player.isYourTurn = isCurrentPlayer;
             currentPlayer = player;
-            Debug.Log("Player's Turn");
-
+            GameManager.Instance.ShowDebugMessages("Player's Turn");
         }
     }
 }

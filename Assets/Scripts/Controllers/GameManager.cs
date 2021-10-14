@@ -43,6 +43,10 @@ public class GameManager : MonoBehaviour
         uIController.GameOverPanel();
         // Debug.Log("Pause");
     }
+    public void ShowDebugMessages(string msg)
+    {
+        uIController.DebugToTxt(msg);
+    }
 
     void SetUpTheGame()
     {

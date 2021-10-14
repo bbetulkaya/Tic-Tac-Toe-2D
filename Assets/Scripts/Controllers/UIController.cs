@@ -2,47 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using System.Linq;
 namespace Controllers.UI
 {
     public class UIController : MonoBehaviour
     {
-        public List<GameObject> Panels = new List<GameObject>();
-        public Button restart;
-        // Start is called before the first frame update
+        public List<GameObject> panels = new List<GameObject>();
+        public TMP_Text notificationText;
+
         void Start()
         {
             CloseAllPanel();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-
         // Example panels for the UI
         public void GameOverPanel()
         {
-            GameObject panel = Panels.ElementAt(0);
+            GameObject panel = panels.ElementAt(1);
             panel.SetActive(true);
             Debug.Log("Game is Over");
         }
-        void Menu()
-        {
-
-        }
-        void DebugMessages()
-        {
-
-        }
-
         void CloseAllPanel()
         {
-            GameObject panel = Panels.ElementAt(0);
-            panel.SetActive(false);
+
+            for (int i = 0; i < panels.Count(); i++)
+            {
+                GameObject panel = panels.ElementAt(i);
+                panel.SetActive(false);
+            }
+
         }
 
+        public void DebugToTxt(string msg)
+        {
+            GameObject notificationPanel = panels.ElementAt(0);
+            notificationPanel.SetActive(true);
+            notificationText.text = msg;
+
+            StartCoroutine("PanelScreenTime", 0);
+
+        }
+
+        IEnumerator PanelScreenTime(int index)
+        {
+            yield return new WaitForSeconds(1.5f);
+            panels.ElementAt(index).SetActive(false);
+        }
     }
 }
