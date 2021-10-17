@@ -54,6 +54,10 @@ public class Gameplay : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                    GameManager.Instance.ShowDebugMessages("Position is taken! Try Again..");
+            }
         }
     }
 

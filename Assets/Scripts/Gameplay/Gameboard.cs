@@ -58,7 +58,6 @@ public class Gameboard : MonoBehaviour
         }
         else
         {
-            Debug.Log("The position is taken. Please Try Again..");
             return false;
         }
 

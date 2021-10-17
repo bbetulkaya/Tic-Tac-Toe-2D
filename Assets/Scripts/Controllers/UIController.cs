@@ -21,7 +21,7 @@ namespace Controllers.UI
         {
             GameObject panel = panels.ElementAt(1);
             panel.SetActive(true);
-            Debug.Log("Game is Over");
+            DebugToTxt("The Game is Over");
         }
         void CloseAllPanel()
         {
@@ -46,7 +46,7 @@ namespace Controllers.UI
 
         IEnumerator PanelScreenTime(int index)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(4f);
             panels.ElementAt(index).SetActive(false);
         }
     }
