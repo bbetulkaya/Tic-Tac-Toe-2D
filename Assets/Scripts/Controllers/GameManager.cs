@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
 
-    public UIController uIController;
+    UIController uIController;
     private void Awake()
     {
         _instance = this;
+        
+        uIController = GetComponentInChildren<UIController>();
     }
     public static GameManager Instance
     {
@@ -33,11 +35,6 @@ public class GameManager : MonoBehaviour
     //     // because the game manager will be created before the objects
     // }
 
-    public void Pause()
-    {
-
-    }
-
     public void GameOver()
     {
         uIController.GameOverPanel();
@@ -48,26 +45,6 @@ public class GameManager : MonoBehaviour
         uIController.DebugToTxt(msg);
     }
 
-    void SetUpTheGame()
-    {
-        // Create Player
-        // Create Gameboard
-    }
-
-    void StartTheGame()
-    {
-        // Choice the player
-        // Set the player sprite and other things
-        // Begin the GameLoop
-
-    }
-    void GameLoop()
-    {
-        // Choice the next move
-        // Check the winning states
-        // Wait the enemy's move
-        // LOOP
-    }
     public void ReloadTheGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

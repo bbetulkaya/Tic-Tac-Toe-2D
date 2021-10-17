@@ -14,10 +14,9 @@ namespace User.PlayerController
 
         void Start()
         {
-            gameplay = GetComponentInChildren<Gameplay>();
+            // gameplay = GetComponentInChildren<Gameplay>();
             player = gameplay.currentPlayer;
         }
-
 
         void Update()
         {

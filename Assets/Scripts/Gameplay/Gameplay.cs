@@ -12,7 +12,6 @@ public class Gameplay : MonoBehaviour
     public Player currentPlayer;
     public Sprite playerSprite;
     public Sprite enemySprite;
-
     public InputController playerInput;
     Gameboard gameboard;
     WinningStates winningStates;
@@ -25,39 +24,35 @@ public class Gameplay : MonoBehaviour
         CreatePlayers();
         gameboard.CreateGameBoard();
     }
-    void Start()
-    {
-
-    }
 
     public void PlayerChoice()
     {
         Collider2D selectedGrid = playerInput.GetPlayerSelectedGrid();
         if (selectedGrid != null)
         {
-            if (!gameboard.CheckisBoardFull())
-            {
-                bool gridSaved = gameboard.SaveSelectedGrid(selectedGrid.gameObject, currentPlayer);
+            bool gridSaved = gameboard.SaveSelectedGrid(selectedGrid.gameObject, currentPlayer);
 
-                if (gridSaved)
+            if (gridSaved)
+            {
+                if (winningStates.isTheCharacterWinning(gameboard.GameBoard, currentPlayer.value))
                 {
-                    if (winningStates.isTheCharacterWinning(gameboard.GameBoard, currentPlayer.value))
+                    // Oyunu bitirme kodlarının yazılması gereken yer.
+                    GameManager.Instance.ShowDebugMessages("The Winner is: " + currentPlayer.playerName);
+                    GameManager.Instance.GameOver();
+
+                }
+                else
+                {
+                    if (IsGameContinuing())
                     {
-                        GameManager.Instance.ShowDebugMessages("The Winner is: " + currentPlayer.playerName);
-                        GameManager.Instance.GameOver();
-                        // Oyunu bitirme kodlarının yazılması gereken yer.
+                        SwicthPlayer(currentPlayer.value);
                     }
                     else
                     {
-                        SwicthCharacter(currentPlayer.value);
+                        GameManager.Instance.ShowDebugMessages("The game is tie!");
+                        GameManager.Instance.GameOver();
                     }
                 }
-
-            }
-            else
-            {
-                GameManager.Instance.ShowDebugMessages("The game is tie!");
-                GameManager.Instance.GameOver();
             }
         }
     }
@@ -70,7 +65,7 @@ public class Gameplay : MonoBehaviour
         currentPlayer = player;
     }
 
-    void SwicthCharacter(int value)
+    void SwicthPlayer(int value)
     {
 
         if (value == 1)
@@ -85,6 +80,18 @@ public class Gameplay : MonoBehaviour
             player.isYourTurn = isCurrentPlayer;
             currentPlayer = player;
             GameManager.Instance.ShowDebugMessages("Player's Turn");
+        }
+    }
+
+    bool IsGameContinuing()
+    {
+        if (!gameboard.CheckisBoardFull())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
