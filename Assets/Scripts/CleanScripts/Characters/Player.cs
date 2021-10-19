@@ -17,6 +17,7 @@ namespace CleanCode
 
         void Update()
         {
+            // When player clicked the sprite call playerchoice method
             if (Input.GetMouseButtonDown(0) && isCurrentPlayer)
             {
                 // gameplay.PlayerChoice();
