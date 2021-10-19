@@ -6,8 +6,15 @@ namespace CleanCode
 {
     public class Player : Character, ICharacterStats
     {
-        Sprite playerSprite;
+        public Sprite playerSprite;
         int playerValue = 1;
+
+        IGameplay gameplay;
+
+        void Awake()
+        {
+            gameplay = GetComponentInChildren<IGameplay>();
+        }
         void Start()
         {
             CreateCharacter("Player", playerSprite);
@@ -20,8 +27,10 @@ namespace CleanCode
             // When player clicked the sprite call playerchoice method
             if (Input.GetMouseButtonDown(0) && isCurrentPlayer)
             {
-                // gameplay.PlayerChoice();
+                gameplay.CharacterChosenMove(this);
             }
         }
+
+
     }
 }
