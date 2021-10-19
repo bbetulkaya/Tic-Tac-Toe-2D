@@ -5,10 +5,9 @@ using UnityEngine;
 public class Player
 {
     public string playerName { get; set; }
+    public Sprite playerSprite { get; set; }
     public int value { get; set; }
     public bool isYourTurn { get; set; }
-    public Sprite playerSprite { get; set; }
-
     public Player[] players { get; set; }
 
     public Player(string playerName, int value, bool isYourTurn, Sprite playerSprite)
