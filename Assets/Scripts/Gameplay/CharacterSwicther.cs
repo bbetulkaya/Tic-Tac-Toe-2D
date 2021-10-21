@@ -8,7 +8,7 @@ public class CharacterSwicther : MonoBehaviour
     {
         if (characterData.CurrentPlayer.characterName == "X")
         {
-            characterData.CurrentPlayer = characterData.Player;
+            characterData.CurrentPlayer = characterData.Enemy;
         }
         else
         {

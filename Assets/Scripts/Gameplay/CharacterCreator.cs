@@ -16,7 +16,5 @@ public class CharacterCreator : MonoBehaviour
         characterData.Enemy = new Character("O", -_characterDefaultValue, !isCurrentCharacter, enemySprite);
 
         characterData.CurrentPlayer = characterData.Player;
-
-        Debug.Log(characterData.CurrentPlayer.characterName);
     }
 }
