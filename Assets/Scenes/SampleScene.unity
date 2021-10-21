@@ -1544,6 +1544,9 @@ GameObject:
   - component: {fileID: 1382612967}
   - component: {fileID: 1382612969}
   - component: {fileID: 1382612968}
+  - component: {fileID: 1382612970}
+  - component: {fileID: 1382612971}
+  - component: {fileID: 1382612972}
   m_Layer: 0
   m_Name: Gameplay
   m_TagString: Untagged
@@ -1577,9 +1580,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab7ca2e32844c142b960f919810d090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 21300000, guid: bdcae38b7f8616842bd2184332f06894, type: 3}
-  enemySprite: {fileID: 21300000, guid: 09104e9da7885a3419e9690193d32449, type: 3}
-  playerInput: {fileID: 1873468359}
+  CharacterInput: {fileID: 1873468359}
+  characterData: {fileID: 0}
 --- !u!114 &1382612968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1604,6 +1606,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9735ac130f3023847be420c1076d44bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1382612970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382612965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ffb52946715094595b2efd8ad5f1d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1382612971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382612965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2750a5a2e2c52a4bb98d2243901a8e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1382612972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382612965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f1df66ebda05d4fbbb2e72ed5b3aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSprite: {fileID: 21300000, guid: bdcae38b7f8616842bd2184332f06894, type: 3}
+  enemySprite: {fileID: 21300000, guid: 09104e9da7885a3419e9690193d32449, type: 3}
+  isCurrentCharacter: 1
 --- !u!1 &1392985788
 GameObject:
   m_ObjectHideFlags: 0
