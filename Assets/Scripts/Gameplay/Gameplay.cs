@@ -6,38 +6,38 @@ using UnityEngine;
 using User.PlayerInput;
 public class Gameplay : MonoBehaviour
 {
-    Player player;
-    Player enemy;
-    bool isCurrentPlayer = true;
-    public Player currentPlayer;
-    public Sprite playerSprite;
-    public Sprite enemySprite;
-    public InputController playerInput;
+    public InputController CharacterInput;
+    public CharacterData characterData;
     Gameboard gameboard;
     WinningStates winningStates;
+    CharacterCreator characterCreator;
+    CharacterSwicther characterSwicther;
 
     void Awake()
     {
         gameboard = GetComponent<Gameboard>();
         winningStates = GetComponent<WinningStates>();
+        characterCreator = GetComponent<CharacterCreator>();
+        characterSwicther = GetComponent<CharacterSwicther>();
+        characterData = GetComponent<CharacterData>();
 
-        CreatePlayers();
         gameboard.CreateGameBoard();
+        characterCreator.CreateCharacters(characterData);
     }
 
-    public void PlayerChoice()
+    public void CharacterChoice()
     {
-        Collider2D selectedGrid = playerInput.GetPlayerSelectedGrid();
+        Collider2D selectedGrid = CharacterInput.GetSelectedGrid();
         if (selectedGrid != null)
         {
-            bool gridSaved = gameboard.SaveSelectedGrid(selectedGrid.gameObject, currentPlayer);
+            bool gridSaved = gameboard.SaveSelectedGrid(selectedGrid.gameObject, characterData.CurrentPlayer);
 
             if (gridSaved)
             {
-                if (winningStates.isTheCharacterWinning(gameboard.GameBoard, currentPlayer.value))
+                if (winningStates.isTheCharacterWinning(gameboard.GameBoard, characterData.CurrentPlayer.value))
                 {
                     // Oyunu bitirme kodlarının yazılması gereken yer.
-                    GameManager.Instance.ShowDebugMessages("The Winner is: " + currentPlayer.playerName);
+                    GameManager.Instance.ShowDebugMessages("The Winner is: " + characterData.CurrentPlayer.characterName);
                     GameManager.Instance.GameOver();
 
                 }
@@ -45,7 +45,7 @@ public class Gameplay : MonoBehaviour
                 {
                     if (IsGameContinuing())
                     {
-                        SwicthPlayer(currentPlayer.value);
+                        characterSwicther.SwicthCharacter(characterData);
                     }
                     else
                     {
@@ -56,34 +56,8 @@ public class Gameplay : MonoBehaviour
             }
             else
             {
-                    GameManager.Instance.ShowDebugMessages("Position is taken! Try Again..");
+                GameManager.Instance.ShowDebugMessages("Position is taken! Try Again..");
             }
-        }
-    }
-
-    public void CreatePlayers()
-    {
-        player = new Player("X", 1, isCurrentPlayer, playerSprite);
-        enemy = new Player("O", -1, !isCurrentPlayer, enemySprite);
-
-        currentPlayer = player;
-    }
-
-    void SwicthPlayer(int value)
-    {
-
-        if (value == 1)
-        {
-            enemy.isYourTurn = isCurrentPlayer;
-            currentPlayer = enemy;
-            GameManager.Instance.ShowDebugMessages("Enemy's Turn");
-
-        }
-        else
-        {
-            player.isYourTurn = isCurrentPlayer;
-            currentPlayer = player;
-            GameManager.Instance.ShowDebugMessages("Player's Turn");
         }
     }
 

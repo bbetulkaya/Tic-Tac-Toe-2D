@@ -9,26 +9,24 @@ namespace User.PlayerController
 {
     public class PlayerController : MonoBehaviour
     {
-        Player player;
+        Character player;
         public Gameplay gameplay;
 
         void Start()
         {
-            // gameplay = GetComponentInChildren<Gameplay>();
-            player = gameplay.currentPlayer;
+            player = gameplay.characterData.CurrentPlayer;
         }
-
         void Update()
         {
-            // WHEN THE ENEMY AI ADD DELETE THIS STATEMENT!!
-            if (!player.isYourTurn)
+            // WHEN THE ENEMY AI ADDED, DELETE THIS STATEMENT!!
+            if (!player.isCurrentPlayer)
             {
-                player = gameplay.currentPlayer;
+                player = gameplay.characterData.CurrentPlayer;
             }
 
-            if (Input.GetMouseButtonDown(0) && player.isYourTurn)
+            if (Input.GetMouseButtonDown(0) && player.isCurrentPlayer)
             {
-                gameplay.PlayerChoice();
+                gameplay.CharacterChoice();
             }
         }
     }

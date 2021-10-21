@@ -6,7 +6,7 @@ namespace User.PlayerInput
 {
     public class InputController : MonoBehaviour
     {
-        public Collider2D GetPlayerSelectedGrid()
+        public Collider2D GetSelectedGrid()
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);

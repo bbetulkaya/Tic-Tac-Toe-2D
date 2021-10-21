@@ -40,7 +40,7 @@ public class Gameboard : MonoBehaviour
         return true;
     }
 
-    public bool SaveSelectedGrid(GameObject grid, Player currentPlayer)
+    public bool SaveSelectedGrid(GameObject grid, Character currentCharacter)
     {
         
         // Turn the grid name to integer
@@ -50,9 +50,8 @@ public class Gameboard : MonoBehaviour
         // Add x or y value to GridArray
         if (!CheckIsPositionTaken(GameBoard[posCol, posRow]))
         {
-            GameBoard[posCol, posRow] = currentPlayer.value;
-            grid.GetComponent<SpriteRenderer>().sprite = currentPlayer.playerSprite ;
-            currentPlayer.isYourTurn = false;
+            GameBoard[posCol, posRow] = currentCharacter.value;
+            grid.GetComponent<SpriteRenderer>().sprite = currentCharacter.characterSprite;
             return true;
             
         }

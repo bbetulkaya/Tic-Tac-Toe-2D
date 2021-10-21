@@ -16,6 +16,12 @@ namespace Controllers.UI
             CloseAllPanel();
         }
 
+        public void GamePanel()
+        {
+            // show the who is the player now
+            // menu and resume button
+            
+        }
         // Example panels for the UI
         public void GameOverPanel()
         {
